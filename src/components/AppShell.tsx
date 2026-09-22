@@ -86,7 +86,7 @@ export function SiteFooter() {
     <footer className="site-footer" role="contentinfo">
       <div className="footer-inner">
         <div className="footer-messages">
-          <p className="footer-msg-primary">පූජා භූමිය පිරිසිදුවව තබාගමු.</p>
+          <p className="footer-msg-primary">පූජා භූමිය පිරිසිදුව තබාගමු.</p>
           <p className="footer-msg-secondary">ඔබ සැමට ගම්භාර දෙවි පිහිටයි.</p>
         </div>
 
