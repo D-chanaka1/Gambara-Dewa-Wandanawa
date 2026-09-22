@@ -87,7 +87,7 @@ export function SiteFooter() {
       <div className="footer-inner">
         <div className="footer-messages">
           <p className="footer-msg-primary">පූජා භූමිය පිරිසිදුවව තබාගමු.</p>
-          <p className="footer-msg-secondary">ඔබ සැමට ගම්භාර දැළි පිහිටයි.</p>
+          <p className="footer-msg-secondary">ඔබ සැමට ගම්භාර දෙවි පිහිටයි.</p>
         </div>
 
         {/* WhatsApp share button — centred below messages */}
