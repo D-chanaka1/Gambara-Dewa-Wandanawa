@@ -382,11 +382,12 @@ button {
     0 1px 3px rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  /* Mobile: single column, everything centered */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   text-align: center;
 }
 
@@ -516,19 +517,25 @@ button {
   .footer-inner {
     border-radius: 1.5rem;
     padding: 14px 28px;
-    flex-direction: row;
-    justify-content: space-between;
+    /* 3-column grid: messages | WA button (true center) | sponsor */
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
+    gap: 16px;
     text-align: left;
-    gap: 20px;
   }
 
+  /* Left cell */
   .footer-messages {
     align-items: flex-start;
     text-align: left;
+    justify-self: start;
   }
 
+  /* Center cell — WA button naturally occupies the auto column */
+  /* Right cell */
   .footer-sponsor {
+    justify-self: end;
     justify-content: flex-end;
     flex-shrink: 0;
   }
@@ -547,5 +554,68 @@ button {
 
   .footer-logo {
     height: 100px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   WHATSAPP SHARE BUTTON
+═══════════════════════════════════════════════════════ */
+@keyframes waPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55); }
+  50%       { box-shadow: 0 0 0 8px rgba(37, 211, 102, 0); }
+}
+
+.wa-share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  background: #25D366;
+  color: #ffffff;
+  font-family: var(--font-noto-sinhala), serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background 0.18s ease, transform 0.15s ease, box-shadow 0.18s ease;
+  animation: waPulse 2.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.wa-share-btn:hover {
+  background: #1ebe5d;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+  animation: none;
+}
+
+.wa-share-btn:active,
+.wa-share-btn--tapped {
+  background: #179c4e;
+  transform: scale(0.96);
+  box-shadow: none;
+  animation: none;
+}
+
+.wa-icon {
+  display: block;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.wa-label {
+  line-height: 1;
+}
+
+/* Desktop — slightly larger button */
+@media (min-width: 768px) {
+  .wa-share-btn {
+    font-size: 14px;
+    padding: 9px 22px;
+    gap: 10px;
   }
 }

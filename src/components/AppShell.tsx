@@ -4,6 +4,11 @@ import { useState } from "react";
 import Image from "next/image";
 import { LangContext, useLang, type Lang } from "@/context/LangContext";
 
+const SITE_URL = "https://gambhara-dewa-wandhanawa.vercel.app";
+const WA_MESSAGE =
+  "ගම්භාර දේව වන්දනාව – බැතිමත් වන්දනාවය මෙතැනින් බලන්න: " +
+  SITE_URL;
+
 /* ─── Language Toggle Pill ─── */
 function LangToggle() {
   const { lang, setLang } = useLang();
@@ -40,15 +45,54 @@ export function SiteHeader() {
   );
 }
 
+/* ─── WhatsApp Share Button ─── */
+function WhatsAppShare() {
+  const [tapped, setTapped] = useState(false);
+
+  const handleShare = () => {
+    setTapped(true);
+    setTimeout(() => setTapped(false), 600);
+    window.open(
+      `https://wa.me/?text=${encodeURIComponent(WA_MESSAGE)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
+  return (
+    <button
+      id="whatsapp-share-btn"
+      className={`wa-share-btn${tapped ? " wa-share-btn--tapped" : ""}`}
+      onClick={handleShare}
+      aria-label="Share on WhatsApp"
+      title="Share on WhatsApp"
+    >
+      <Image
+        src="/whatsapp.webp"
+        alt="WhatsApp"
+        width={22}
+        height={22}
+        className="wa-icon"
+        priority={false}
+      />
+      <span className="wa-label">{"Share \u0d9a\u0dbb\u0db1\u0dca\u0db1"}</span>
+    </button>
+  );
+}
+
 /* ─── Rounded Footer Card ─── */
 export function SiteFooter() {
   return (
     <footer className="site-footer" role="contentinfo">
       <div className="footer-inner">
         <div className="footer-messages">
-          <p className="footer-msg-primary">පූජා භූමිය පිරිසිදුව තබාගමු.</p>
-          <p className="footer-msg-secondary">ඔබ සැමට ගම්භාර දෙවි පිහිටයි.</p>
+          <p className="footer-msg-primary">පූජා භූමිය පිරිසිදුවව තබාගමු.</p>
+          <p className="footer-msg-secondary">ඔබ සැමට ගම්භාර දැළි පිහිටයි.</p>
         </div>
+
+        {/* WhatsApp share button — centred below messages */}
+        <WhatsAppShare />
+
         <div className="footer-sponsor">
           <span className="footer-label">බැතිබර දායකත්වය</span>
           <div className="footer-divider" aria-hidden="true" />
