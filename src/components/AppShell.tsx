@@ -6,7 +6,7 @@ import { LangContext, useLang, type Lang } from "@/context/LangContext";
 
 const SITE_URL = "https://gambhara-dewa-wandhanawa.vercel.app";
 const WA_MESSAGE =
-  "ගම්භාර දේව වන්දනාව – බැතිමත් වන්දනාවය මෙතැනින් බලන්න: " +
+  "ගම්භාර දේව වන්දනාව – බැතිමත් වන්දනාva මෙතැනින් බලන්න: " +
   SITE_URL;
 
 /* ─── Language Toggle Pill ─── */
